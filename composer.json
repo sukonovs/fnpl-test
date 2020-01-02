@@ -1,0 +1,14 @@
+{
+    "name": "sukonovs/fnpl-test",
+    "description": "Test task for company Fly Now Pay Later",
+    "type": "project",
+    "license": "Unlicense",
+    "authors": [
+        {
+            "name": "Roberts Sukonovs",
+            "email": "roberts.sukonovs@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
