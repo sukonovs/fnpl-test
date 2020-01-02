@@ -35,7 +35,7 @@ class Address
     public $country = '';
 
     /**
-     * @var array
+     * @var array|Contact[]
      */
     private $contacts = [];
 
@@ -148,17 +148,17 @@ class Address
     }
 
     /**
-     * @param array $contacts
+     * @param Contact $contact
      * @return Address
      */
-    public function setContacts(array $contacts): Address
+    public function addContact(Contact $contact): Address
     {
-        $this->contacts = $contacts;
+        $this->contacts[] = $contact;
         return $this;
     }
 
     /**
-     * @return array
+     * @return array|Contact[]
      */
     public function getContacts(): array
     {
