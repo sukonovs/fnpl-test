@@ -1,11 +1,13 @@
 <?php
 
-require_once dirname(__FILE__).'/book.php';
-require_once dirname(__FILE__).'/address.php';
-require_once dirname(__FILE__).'/contact.php';
+use FlyNowPayLater\Address;
+use FlyNowPayLater\Book;
+use FlyNowPayLater\Contact;
+
+require __DIR__ . '/vendor/autoload.php';
 
 # Create first contact
-$contact = new Contact;
+$contact = new Contact();
 $contact->setName('Mr John Doe');
 $contact->setEmail('john@doe.com');
 
@@ -13,14 +15,14 @@ $contact->setEmail('john@doe.com');
 $contacts[] = $contact;
 
 # Create second contact
-$contact = new Contact;
+$contact = new Contact();
 $contact->setName('Ms Anna Baker')->setEmail('anna@baker.com');
 
 # Add second contact to list of contacts
 $contacts[] = $contact;
 
 # Open new book
-$book = new Book;
+$book = new Book();
 
 # Add first address with both contacts
 $book->createAddress(function(Address $address) use ($contacts){
@@ -39,7 +41,7 @@ $book->createAddress(function(Address $address) use ($contacts){
 $contacts = [];
 
 # Create first contact
-$contact = new Contact;
+$contact = new Contact();
 $contact->setName('Ms Dane Rovens');
 $contact->setEmail('dane@rovens.com');
 

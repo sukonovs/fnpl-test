@@ -1,5 +1,7 @@
 <?php
 
+namespace FlyNowPayLater;
+
 class Contact
 {
     /**
