@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 class Address
 {
@@ -41,7 +41,7 @@ class Address
      * @param string $houseNumber
      * @return Address
      */
-    public function setHouseNumber($houseNumber)
+    public function setHouseNumber(string $houseNumber): Address
     {
         $this->houseNumber = $houseNumber;
         return $this;
@@ -50,7 +50,7 @@ class Address
     /**
      * @return string
      */
-    public function getHouseNumber()
+    public function getHouseNumber(): string
     {
         return $this->houseNumber;
     }
@@ -59,7 +59,7 @@ class Address
      * @param string $street
      * @return Address
      */
-    public function setStreet($street)
+    public function setStreet(string $street): Address
     {
         $this->street = $street;
         return $this;
@@ -68,7 +68,7 @@ class Address
     /**
      * @return string
      */
-    public function getStreet()
+    public function getStreet(): string
     {
         return $this->street;
     }
@@ -77,7 +77,7 @@ class Address
      * @param string $city
      * @return Address
      */
-    public function setCity($city)
+    public function setCity(string $city): Address
     {
         $this->city = $city;
         return $this;
@@ -86,7 +86,7 @@ class Address
     /**
      * @return string
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->city;
     }
@@ -95,7 +95,7 @@ class Address
      * @param string $county
      * @return Address
      */
-    public function setCounty($county)
+    public function setCounty(string $county): Address
     {
         $this->county = $county;
         return $this;
@@ -104,7 +104,7 @@ class Address
     /**
      * @return string
      */
-    public function getCounty()
+    public function getCounty(): string
     {
         return $this->county;
     }
@@ -113,7 +113,7 @@ class Address
      * @param string $postcode
      * @return Address
      */
-    public function setPostcode($postcode)
+    public function setPostcode(string $postcode): Address
     {
         $this->postcode = $postcode;
         return $this;
@@ -122,7 +122,7 @@ class Address
     /**
      * @return string
      */
-    public function getPostcode()
+    public function getPostcode(): string
     {
         return $this->postcode;
     }
@@ -131,7 +131,7 @@ class Address
      * @param string $country
      * @return Address
      */
-    public function setCountry($country)
+    public function setCountry(string $country): Address
     {
         $this->country = $country;
         return $this;
@@ -140,7 +140,7 @@ class Address
     /**
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): string
     {
         return $this->country;
     }
@@ -149,7 +149,7 @@ class Address
      * @param array $contacts
      * @return Address
      */
-    public function setContacts($contacts)
+    public function setContacts(array $contacts): Address
     {
         $this->contacts = $contacts;
         return $this;
@@ -158,7 +158,7 @@ class Address
     /**
      * @return array
      */
-    public function getContacts()
+    public function getContacts(): array
     {
         return $this->contacts;
     }
