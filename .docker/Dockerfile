@@ -1,6 +1,6 @@
 FROM php:7.4-cli
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
+COPY . /srv/app
+WORKDIR /srv/app
 
 RUN apt-get update && \
     apt-get upgrade -y && \
