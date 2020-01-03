@@ -16,6 +16,7 @@ class Contact
 
     /**
      * @param string $name
+     *
      * @return Contact
      */
     public function setName($name)
@@ -26,6 +27,7 @@ class Contact
 
     /**
      * @param string $email
+     *
      * @return Contact
      */
     public function setEmail($email)
