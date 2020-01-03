@@ -2,7 +2,6 @@
 
 namespace FlyNowPayLater;
 
-
 class Address
 {
     /**
@@ -165,7 +164,7 @@ class Address
      *
      * @return array
      */
-    private function unsetUnprintableParameters(array $parameterSections): array
+    protected function unsetUnprintableParameters(array $parameterSections): array
     {
         foreach ($parameterSections as $i => &$parameterSection) {
             foreach ($parameterSection as $j => $parameter) {
