@@ -25,14 +25,6 @@ class Contact
     }
 
     /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * @param string $email
      * @return Contact
      */
@@ -45,8 +37,8 @@ class Contact
     /**
      * @return string
      */
-    public function getEmail()
+    public function __toString()
     {
-        return $this->email;
+        return htmlspecialchars("<{$this->email}> $this->name");
     }
 }
