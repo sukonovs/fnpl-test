@@ -22,6 +22,7 @@ class Contact
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -33,6 +34,7 @@ class Contact
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
