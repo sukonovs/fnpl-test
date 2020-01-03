@@ -2,7 +2,6 @@
 
 namespace FlyNowPayLater;
 
-use LogicException;
 
 class Address
 {
@@ -146,27 +145,9 @@ class Address
             ['country']
         ];
 
-        $printableString = '';
+        $parameterSections = $this->unsetUnprintableParameters($parameterSections);
 
-        foreach ($parameterSections as $parameterSection) {
-            $lastSection = $parameterSection === end($parameterSections);
-            foreach ($parameterSection as $parameter) {
-                $lastParameterInSection = $parameter === end($parameterSection);
-                if ($this->isClassParameterPrintable($parameter)) {
-                    $printableString .= $this->{$parameter};
-
-                    if (!$lastParameterInSection) {
-                        $printableString .= ' ';
-                    }
-
-                    if ($lastParameterInSection && !$lastSection) {
-                        $printableString .= ', ';
-                    }
-                }
-            }
-        }
-
-        return htmlspecialchars($printableString);
+        return htmlspecialchars($this->constructPrintableString($parameterSections));
     }
 
     /**
@@ -176,12 +157,56 @@ class Address
      */
     protected function isClassParameterPrintable(string $parameter): bool
     {
-        if (!isset($this->{$parameter})) {
-            throw new LogicException(sprintf("Class should have parameter %s to be printable.", $parameter));
+        return isset($this->{$parameter}) && is_string($this->{$parameter}) && !empty($this->{$parameter});
+    }
+
+    /**
+     * @param array $parameterSections
+     *
+     * @return array
+     */
+    private function unsetUnprintableParameters(array $parameterSections): array
+    {
+        foreach ($parameterSections as $i => &$parameterSection) {
+            foreach ($parameterSection as $j => $parameter) {
+                if (!$this->isClassParameterPrintable($parameter)) {
+                    unset($parameterSections[$i][$j]);
+                }
+            }
+
+            if (empty($parameterSection)) {
+                unset($parameterSections[$i]);
+            }
         }
 
-        $parameterValue = $this->{$parameter};
+        return $parameterSections;
+    }
 
-        return is_string($parameterValue) && !empty($parameterValue);
+    /**
+     * @param array $parameterSections
+     *
+     * @return string
+     */
+    protected function constructPrintableString(array $parameterSections): string
+    {
+        $printableString = '';
+
+        foreach ($parameterSections as $parameterSection) {
+            $lastSection = $parameterSection === end($parameterSections);
+            foreach ($parameterSection as $parameter) {
+                $lastParameterInSection = $parameter === end($parameterSection);
+
+                $printableString .= $this->{$parameter};
+                $printableString .= !$lastParameterInSection ? ' ' : '';
+
+                if (!$lastParameterInSection) {
+                    continue;
+                }
+
+                $printableString .= !$lastSection ? ', ' : '';
+            }
+        }
+
+        return $printableString;
     }
 }
