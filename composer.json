@@ -9,15 +9,23 @@
             "email": "roberts.sukonovs@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "FlyNowPayLater\\": "src"
         }
     },
+    "require": {
+        "php": "7.1.0"
+    },
     "require-dev": {
         "codeception/codeception": "^4.0",
         "codeception/module-asserts": "^1.1",
         "codeception/module-phpbrowser": "^1.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.1.0"
+        }
     }
 }
